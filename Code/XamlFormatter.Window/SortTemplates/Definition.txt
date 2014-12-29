@@ -1,0 +1,39 @@
+﻿[Default]
+PropertyLengthToReturn = 60
+x:Class
+xmlns
+mc:Ignorable
+Grid.Row, Grid.RowSpan, Grid.Column, Grid.ColumnSpan
+Dockpanel.Dock
+Name, x:Name, x:Key
+Orientation
+d:DesignWidth,d:DesignHeight
+Width, Height
+BorderThickness, BorderBrush, Foreground, Background, Fill
+AcceptsReturn, AcceptsTab
+FontSize, FontFamily, TextWrapping
+Title, Header, Text, Content
+ScrollViewer.PanningMode
+HorizontalScrollBarVisibility,VerticalScrollBarVisibility
+MouseLeftButtonDown
+MouseMove
+MouseLeftButtonUp
+Click
+
+[Setter]
+TargetName, Property, Value
+
+[RowDefinition]
+Height, MinHeight, MaxHeight
+
+[ColumnDefinition]
+Width, MinWidth, MaxWidth
+
+[GradientStop]
+Offset, Color
+
+[LinearGradientBrush]
+StartPoint,EndPoint
+
+[ControlTemplate]
+UseExternalFile=D:\ControlTemplate.txt

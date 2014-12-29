@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="Cvte.Xaml.Presentation.EntranceBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             Loaded="EntranceBar_Loaded">
+
+    <!-- 引用默认样式资源 -->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/XamlFormatter;component/Themes/Windows/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="NormalColor">#FF293955</Color>
+            <Color x:Key="SuccessColor">ForestGreen</Color>
+            <Color x:Key="ErrorColor">Tomato</Color>
+            <Storyboard x:Key="DisplaySuccessStoryboard"
+                        Completed="DisplayStoryboard_Completed">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="MessageButton"
+                                              Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)">
+                    <ColorAnimationUsingKeyFrames.KeyFrames>
+                        <LinearColorKeyFrame KeyTime="0:0:1"
+                                             Value="{StaticResource SuccessColor}" />
+                        <LinearColorKeyFrame KeyTime="0:0:8"
+                                             Value="{StaticResource SuccessColor}" />
+                        <LinearColorKeyFrame KeyTime="0:0:13"
+                                             Value="{StaticResource NormalColor}" />
+                    </ColorAnimationUsingKeyFrames.KeyFrames>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="DisplayErrorStoryboard"
+                        Completed="DisplayStoryboard_Completed">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="MessageButton"
+                                              Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)">
+                    <ColorAnimationUsingKeyFrames.KeyFrames>
+                        <LinearColorKeyFrame KeyTime="0:0:1"
+                                             Value="{StaticResource ErrorColor}" />
+                        <LinearColorKeyFrame KeyTime="0:0:8"
+                                             Value="{StaticResource ErrorColor}" />
+                        <LinearColorKeyFrame KeyTime="0:0:13"
+                                             Value="{StaticResource NormalColor}" />
+                    </ColorAnimationUsingKeyFrames.KeyFrames>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <!-- 启动时播放动画 -->
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UserControl.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource DisplaySuccessStoryboard}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <!-- 根布局 -->
+    <Grid Background="#FFE6E7E8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button"
+                   BasedOn="{StaticResource DefaultButtonStyle}">
+                <Setter Property="Padding" Value="16,4" />
+            </Style>
+        </Grid.Resources>
+
+        <!-- 插件内容 -->
+        <Button Grid.Column="0"
+                x:Name="XamlFormatButton"
+                HorizontalAlignment="Left"
+                Background="#FF293955"
+                Content="格式化 XAML"
+                Click="XamlFormatButton_Click" />
+        <Button Grid.Column="1"
+                x:Name="MessageButton"
+                Margin="1,0"
+                HorizontalContentAlignment="Left"
+                Background="#FF293955"
+                Content="XAML 格式化工具" />
+        <Button Grid.Column="2"
+                x:Name="TemplateButton"
+                HorizontalAlignment="Left"
+                Background="#FF293955"
+                Content="模板"
+                Click="TemplateButton_Click" />
+    </Grid>
+</UserControl>

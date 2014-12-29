@@ -1,0 +1,69 @@
+﻿<Window x:Class="Cvte.Xaml.Presentation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="960" Height="540"
+        Title="XAML 格式化工具">
+
+    <!-- 资源 -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/XAML格式化工具;component/Themes/Windows/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- 根布局 -->
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Offset="0" Color="LightGoldenrodYellow" />
+                <GradientStop Offset="0.2" Color="Transparent" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!-- 操作按钮 -->
+        <WrapPanel Orientation="Horizontal">
+            <WrapPanel.Resources>
+                <Style TargetType="Button"
+                       BasedOn="{StaticResource DefaultButtonStyle}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Padding" Value="24,8" />
+                </Style>
+            </WrapPanel.Resources>
+            <Button Background="ForestGreen"
+                    Content="打开 XAML 文件"
+                    Click="OpenButton_Click" />
+            <Button Background="OrangeRed"
+                    Content="格式化 XAML"
+                    Click="XamlFormatButton_Click" />
+            <Button Background="DodgerBlue"
+                    Content="保存 XAML 文件"
+                    Click="SaveButton_Click" />
+            <Button Background="RoyalBlue"
+                    Content="另存 XAML 文件"
+                    Click="SaveAsButton_Click" />
+            <Button Background="LightSeaGreen"
+                    Content="关闭 XAML 文件"
+                    Click="CloseButton_Click" />
+            <Button x:Name="button"
+                    Background="DarkRed"
+                    Content="配置 XAML 格式化样式"
+                    Click="ConfigButton_Click" />
+        </WrapPanel>
+
+        <!-- 代码框 -->
+        <TextBox Grid.Row="1"
+                 x:Name="CodeTextBox"
+                 Foreground="{Binding Background, ElementName=button, Mode=OneTime}"
+                 BorderThickness="0" Background="Transparent"
+                 AcceptsReturn="True" AcceptsTab="True" TextWrapping="NoWrap"
+                 FontSize="14" FontFamily="Consolas"
+                 ScrollViewer.PanningMode="None"
+                 HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" />
+    </Grid>
+</Window>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="XamlFormatter..957ed4b1-50e2-4e36-8e1e-f2002b09832f" Version="1.1.2" Language="zh-Hans" Publisher="吕毅" />
+    <DisplayName>XAML 格式化工具</DisplayName>
+    <Description xml:space="preserve">XAML 格式化工具 能帮助你自动格式化您的 XAML 文件。而您只需要将配置文件放在解决方案根目录即可按照您的要求自动配置。</Description>
+    <ReleaseNotes>1.1.2 增加对已格式化过的文本的判断。</ReleaseNotes>
+    <Icon>xaml.ico</Icon>
+    <PreviewImage>xaml.ico</PreviewImage>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Version="[11.0,13.0)" Id="Microsoft.VisualStudio.Pro" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.5" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+  </Assets>
+</PackageManifest>
